@@ -1,6 +1,6 @@
 # RNN_Text_Generator
 Given a corpus, it generates text based on a seed using one-hot or word embeddings.
-There's a lot of work to be done: improve the model, tune better the parameters, etc.
+There's a lot of work to be done: improve the model, tune better the hyperparameters, etc.
 I'm still learning the workarounds of Recurent Neural Networks, these type of networks are hard to understand for me.
 
 # MODELS
