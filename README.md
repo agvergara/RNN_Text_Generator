@@ -7,249 +7,44 @@ I'm still learning the workarounds of Recurent Neural Networks, these type of ne
 They are practically the same model, but with an embedding layer or without it.
 ### One_hot_model
 
-```javascript
-{
-    "class_name": "Sequential",
-    "config": {
-        "name": "sequential_1",
-        "layers": [{
-            "class_name": "Bidirectional",
-            "config": {
-                "name": "bidirectional_1",
-                "trainable": true,
-                "batch_input_shape": [null, 54, 34],
-                "dtype": "float32",
-                "layer": {
-                    "class_name": "LSTM",
-                    "config": {
-                        "name": "lstm_1",
-                        "trainable": true,
-                        "return_sequences": false,
-                        "return_state": false,
-                        "go_backwards": false,
-                        "stateful": false,
-                        "unroll": false,
-                        "units": 128,
-                        "activation": "tanh",
-                        "recurrent_activation": "hard_sigmoid",
-                        "use_bias": true,
-                        "kernel_initializer": {
-                            "class_name": "VarianceScaling",
-                            "config": {
-                                "scale": 1.0,
-                                "mode": "fan_avg",
-                                "distribution": "uniform",
-                                "seed": null
-                            }
-                        },
-                        "recurrent_initializer": {
-                            "class_name": "Orthogonal",
-                            "config": {
-                                "gain": 1.0,
-                                "seed": null
-                            }
-                        },
-                        "bias_initializer": {
-                            "class_name": "Zeros",
-                            "config": {}
-                        },
-                        "unit_forget_bias": true,
-                        "kernel_regularizer": null,
-                        "recurrent_regularizer": null,
-                        "bias_regularizer": null,
-                        "activity_regularizer": null,
-                        "kernel_constraint": null,
-                        "recurrent_constraint": null,
-                        "bias_constraint": null,
-                        "dropout": 0.0,
-                        "recurrent_dropout": 0.0,
-                        "implementation": 1
-                    }
-                },
-                "merge_mode": "concat"
-            }
-        }, {
-            "class_name": "Dropout",
-            "config": {
-                "name": "dropout_1",
-                "trainable": true,
-                "rate": 0.19999999999999996,
-                "noise_shape": null,
-                "seed": null
-            }
-        }, {
-            "class_name": "Dense",
-            "config": {
-                "name": "dense_1",
-                "trainable": true,
-                "units": 34,
-                "activation": "linear",
-                "use_bias": true,
-                "kernel_initializer": {
-                    "class_name": "VarianceScaling",
-                    "config": {
-                        "scale": 1.0,
-                        "mode": "fan_avg",
-                        "distribution": "uniform",
-                        "seed": null
-                    }
-                },
-                "bias_initializer": {
-                    "class_name": "Zeros",
-                    "config": {}
-                },
-                "kernel_regularizer": null,
-                "bias_regularizer": null,
-                "activity_regularizer": null,
-                "kernel_constraint": null,
-                "bias_constraint": null
-            }
-        }, {
-            "class_name": "Activation",
-            "config": {
-                "name": "activation_1",
-                "trainable": true,
-                "activation": "softmax"
-            }
-        }]
-    },
-    "keras_version": "2.2.4",
-    "backend": "tensorflow"
-}
+```
+__________________________________________________________________________
+Layer (type)                           Output Shape              Param #
+==========================================================================
+bidirectional_1 (Bidirectional LSTM)   (None, 256)               166912
+__________________________________________________________________________
+dropout_1 (Dropout)                    (None, 256)               0
+__________________________________________________________________________
+dense_1 (Dense)                        (None, 34)                8738
+__________________________________________________________________________
+activation_1 (Activation)              (None, 34)                0
+==========================================================================
+Total params: 175,650
+Trainable params: 175,650
+Non-trainable params: 0
+__________________________________________________________________________
 ```
 
 ### Word_embedding_model
 
-```javascript
-{
-    "class_name": "Sequential",
-    "config": {
-        "name": "sequential_1",
-        "layers": [{
-            "class_name": "Embedding",
-            "config": {
-                "name": "embedding_1",
-                "trainable": true,
-                "batch_input_shape": [null, null],
-                "dtype": "float32",
-                "input_dim": 12953,
-                "output_dim": 1024,
-                "embeddings_initializer": {
-                    "class_name": "RandomUniform",
-                    "config": {
-                        "minval": -0.05,
-                        "maxval": 0.05,
-                        "seed": null
-                    }
-                },
-                "embeddings_regularizer": null,
-                "activity_regularizer": null,
-                "embeddings_constraint": null,
-                "mask_zero": false,
-                "input_length": null
-            }
-        }, {
-            "class_name": "Bidirectional",
-            "config": {
-                "name": "bidirectional_1",
-                "trainable": true,
-                "layer": {
-                    "class_name": "LSTM",
-                    "config": {
-                        "name": "lstm_1",
-                        "trainable": true,
-                        "return_sequences": false,
-                        "return_state": false,
-                        "go_backwards": false,
-                        "stateful": false,
-                        "unroll": false,
-                        "units": 128,
-                        "activation": "tanh",
-                        "recurrent_activation": "hard_sigmoid",
-                        "use_bias": true,
-                        "kernel_initializer": {
-                            "class_name": "VarianceScaling",
-                            "config": {
-                                "scale": 1.0,
-                                "mode": "fan_avg",
-                                "distribution": "uniform",
-                                "seed": null
-                            }
-                        },
-                        "recurrent_initializer": {
-                            "class_name": "Orthogonal",
-                            "config": {
-                                "gain": 1.0,
-                                "seed": null
-                            }
-                        },
-                        "bias_initializer": {
-                            "class_name": "Zeros",
-                            "config": {}
-                        },
-                        "unit_forget_bias": true,
-                        "kernel_regularizer": null,
-                        "recurrent_regularizer": null,
-                        "bias_regularizer": null,
-                        "activity_regularizer": null,
-                        "kernel_constraint": null,
-                        "recurrent_constraint": null,
-                        "bias_constraint": null,
-                        "dropout": 0.0,
-                        "recurrent_dropout": 0.0,
-                        "implementation": 1
-                    }
-                },
-                "merge_mode": "concat"
-            }
-        }, {
-            "class_name": "Dropout",
-            "config": {
-                "name": "dropout_1",
-                "trainable": true,
-                "rate": 0.19999999999999996,
-                "noise_shape": null,
-                "seed": null
-            }
-        }, {
-            "class_name": "Dense",
-            "config": {
-                "name": "dense_1",
-                "trainable": true,
-                "units": 12953,
-                "activation": "linear",
-                "use_bias": true,
-                "kernel_initializer": {
-                    "class_name": "VarianceScaling",
-                    "config": {
-                        "scale": 1.0,
-                        "mode": "fan_avg",
-                        "distribution": "uniform",
-                        "seed": null
-                    }
-                },
-                "bias_initializer": {
-                    "class_name": "Zeros",
-                    "config": {}
-                },
-                "kernel_regularizer": null,
-                "bias_regularizer": null,
-                "activity_regularizer": null,
-                "kernel_constraint": null,
-                "bias_constraint": null
-            }
-        }, {
-            "class_name": "Activation",
-            "config": {
-                "name": "activation_1",
-                "trainable": true,
-                "activation": "softmax"
-            }
-        }]
-    },
-    "keras_version": "2.2.4",
-    "backend": "tensorflow"
-}
+```
+__________________________________________________________________________
+Layer (type)                             Output Shape              Param #
+==========================================================================
+embedding_1 (Embedding)                (None, None, 1024)        13263872
+__________________________________________________________________________
+bidirectional_1 (Bidirectional LSTM)   (None, 256)               166912
+__________________________________________________________________________
+dropout_1 (Dropout)                    (None, 256)               0
+__________________________________________________________________________
+dense_1 (Dense)                        (None, 12953)             3328921
+__________________________________________________________________________
+activation_1 (Activation)              (None, 12953)             0
+==========================================================================
+Total params: 17,773,465
+Trainable params: 17,773,465
+Non-trainable params: 0
+__________________________________________________________________________
 ```
 
 ## Usage:
