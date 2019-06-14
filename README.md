@@ -5,6 +5,8 @@ I'm still learning the workarounds of Recurent Neural Networks, these type of ne
 
 # MODELS
 They are practically the same model, but with an embedding layer or without it.
+The one hot model has been trained with the bible to generate religious texts and the word embedding model has been trained with reggaeton "lyrics" because why not, for fun and because I can do it.
+
 ### One_hot_model
 
 ```
