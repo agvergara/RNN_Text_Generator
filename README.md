@@ -50,7 +50,7 @@ __________________________________________________________________________
 ```
 
 ## Usage:
-The usage if kind of simple, just import the class and clean the data!
+The usage if kind of simple, just import the class and clean the data! OR you can simply import the model and only use the data cleaning/shuffling part! :D
 
 ```python
 
