@@ -1,0 +1,1 @@
+LSTM_GEN_word_embeddings_epoch_100_reggaeton.model filter=lfs diff=lfs merge=lfs -text
